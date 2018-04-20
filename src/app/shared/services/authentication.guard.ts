@@ -12,20 +12,21 @@ export class AuthenticationGuard implements CanActivate {
   ) { }
 
   isAuthenticated: boolean;
-  user: any;
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+   
     this.fbauth.getUser().subscribe(user => { 
-      this.user = user
-      if (this.user == undefined) {
+      if (user == undefined) {
         this.isAuthenticated = false;
+        this.router.navigate(['/']);
       } else {
         this.isAuthenticated = true;
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       }
     })
+    
     return this.isAuthenticated;
 
   }
