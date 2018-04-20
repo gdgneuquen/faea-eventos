@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
-import { ServiceWorkerModule } from '@angular/service-worker';
+/* Componentes */
 import { AppComponent } from './app.component';
 
+/* Ambientes */
 import { environment } from '../environments/environment';
 
 /* Modulos */
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { MaterialModule } from './material/material.module';
 import { RoutingModule } from './app.router';
 import { CoreModule } from './core/core.module';

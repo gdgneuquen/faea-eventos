@@ -1,5 +1,14 @@
-<mat-toolbar color="primary" class="toolbar">
-  <mat-toolbar-row>
-    <span>Custom Toolbar</span>
-  </mat-toolbar-row>
+<mat-toolbar color="primary" class="container">
+  <span>
+    <img src="./assets/imagenes/logo-faea.png">
+  </span>
+
+  <div style="flex: 1 1"></div>
+
+  <div class="container" *ngIf="user != undefined">
+    <span>{{user.displayName}}</span>
+    <img class="iconUser" src="assets/icons/ic_account_circle_white_24px.svg">
+  </div>
+
 </mat-toolbar>
+<app-login *ngIf="user == undefined"></app-login>

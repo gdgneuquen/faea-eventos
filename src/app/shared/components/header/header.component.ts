@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationGuard } from '../../services/authentication.guard';
+import { User } from '@firebase/auth-types';
+import { FirebaseauthService } from '../../services/firebaseauth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private fbauth: FirebaseauthService,
+  ) { }
+  isAuthenticated: boolean;
+
+  user: any;
 
   ngOnInit() {
-  }
+    
+    this.fbauth.getUser().subscribe(user => {
+      this.user = user
+    })
+
+ }
 
 }

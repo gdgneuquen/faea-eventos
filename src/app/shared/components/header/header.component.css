@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.iconUser{
+    margin-left: 16px;
+    padding: 0px;
+    height: 32px;
+    width: 32px;
+}
