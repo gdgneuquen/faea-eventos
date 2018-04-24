@@ -1,17 +1,13 @@
 <mat-toolbar color="primary" class="container">
-  <span>
-    <img src="./assets/imagenes/logo-faea.png">
-  </span>
+
+  <img src="./assets/imagenes/logofaea.svg">
 
   <div style="flex: 1 1"></div>
 
-  <div class="container" *ngIf="user != undefined">
-    <span>{{user.displayName}}</span>
-    <img class="iconUser" [matMenuTriggerFor]="profileMenu" src="assets/icons/ic_account_circle_white_24px.svg">
+  <div class="fecha">
+      <span >{{ fechaActual }}</span>
+      <span >{{ horaActual }} hs</span>
   </div>
-
-  <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item (click)="logout()">LogOut</button>
-  </mat-menu>
+  
 
 </mat-toolbar>

@@ -7,12 +7,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
-  },
-  {
-    path: 'home',
     loadChildren: 'app/core/core.module#CoreModule',
-    canActivate: [AuthenticationGuard]
   }
 ];
 

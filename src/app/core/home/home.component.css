@@ -1,0 +1,17 @@
+.container{
+    margin: 16px;
+}
+.card{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 1fr 1fr;
+    grid-column-gap: 12px;
+    justify-items: center;
+}
+.header{
+    color: #aaaaaa;
+    padding: 4px;
+}
+.items{
+    padding: 8px;
+    font-size: 14px;
+}

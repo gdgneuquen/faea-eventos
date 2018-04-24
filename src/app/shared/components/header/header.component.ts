@@ -3,6 +3,7 @@ import { AuthenticationGuard } from '../../services/authentication.guard';
 import { User } from '@firebase/auth-types';
 import { FirebaseauthService } from '../../services/firebaseauth.service';
 import { Router } from '@angular/router';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +20,27 @@ export class HeaderComponent implements OnInit {
   isAuthenticated: boolean;
 
   user: User;
-
+  fechaActual: string;
+  horaActual: string;
   ngOnInit() {
+
+    this.estableceFecha()
+   
+
     //Obtiene Usuario de Auth y lo agrega al Header
     this.fbauth.getUser().subscribe(user => {
       this.user = user
     })
+  }
+
+  estableceFecha(){
+    
+
+    Observable.interval(1000).subscribe(x => {
+      var fecha = new Date();
+      this.fechaActual = fecha.toLocaleDateString()
+      this.horaActual = fecha.toLocaleTimeString('es-AR')
+    });
   }
   
   //LogOut Usuario
