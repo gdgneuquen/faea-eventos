@@ -1,7 +1,15 @@
 <div class="container">
+
+    <li><input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="searchText" (input)="searchTextToParent()" ></li>
+      
   <div >
     <mat-card class="card header">
-      <div>Horario</div><div>Actividad</div><div>Tipo</div><div>Profesor</div><div>Aula</div><div>Estado</div>
+      <div>Horario</div>
+      <div>Actividad</div>
+      <!--div>Tipo</div-->
+      <div>Profesor</div>
+      <div>Aula</div>
+      <div>Estado</div>
     </mat-card>
   </div>
   <div *ngFor="let evento of eventos">
@@ -12,9 +20,9 @@
       <div>
         {{evento.actividad}}
       </div>
-      <div>
+      <!--div>
         {{evento.tipo}}
-      </div>
+      </div-->
       <div>
         {{evento.profesor}}
       </div>
