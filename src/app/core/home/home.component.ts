@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { FirebasedbService } from '../services/firebasedb.service';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import * as moment from 'moment';
 import { Subscription} from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import {FilterPipe} from './pipes'
+
 
 export interface Evento {
   descripcion: string;
@@ -37,9 +39,6 @@ export class HomeComponent implements OnInit {
 
   private subscription : Subscription;
 
-  searchText: string;
-  @Output() searchEmit = new EventEmitter();
-
   constructor(
     private fbDb: FirebasedbService,
   ) { }
@@ -49,18 +48,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let timer = TimerObservable.create(this.unminuto, this.unminuto);
     this.subscription=timer.subscribe(t=>{
-      this.fbDb.getEvents().subscribe(events => {
-        this.eventos = [];
-        events.forEach(event => this.filterCurrentActivity(event))
-      }) 
-      console.log("ejecucion de refresco.");
+      this.getEventos();
     })
+    this.getEventos();
+  }
+
+  getEventos(){
     this.fbDb.getEvents().subscribe(events => {
       this.eventos = [];
       events.forEach(event => this.filterCurrentActivity(event))
-    })
-
-    
+    }) 
   }
 
   filterCurrentActivity(evento: Evento) {
@@ -93,10 +90,6 @@ export class HomeComponent implements OnInit {
     return (actividad.dias[moment().locale('es').weekday()]
           && moment().locale('es').format('HH:mm') >= actividad.horaInicio
           && moment().locale('es').format('HH:mm') <= actividad.horaFin);
-  }
-
-  searchTextToParent() {
-        this.searchEmit.emit(this.searchText);
   }
 
 }
