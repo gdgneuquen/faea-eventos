@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   eventos: any = new Array;
 
   ngOnInit() {
-    let timer = TimerObservable.create(this.unminuto, this.unminuto);
+    let timer = TimerObservable.create(this.diezminutos, this.diezminutos);
     this.subscription=timer.subscribe(t=>{
       this.getEventos();
     })
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
   // Controlar el dia seleccionado en array y la hora vencida
   isEventValid(actividad: Evento) {
     return (actividad.dias[moment().locale('es').weekday()]
-          && moment().locale('es').format('HH:mm') >= actividad.horaInicio
+         // && moment().locale('es').format('HH:mm') >= actividad.horaInicio);
           && moment().locale('es').format('HH:mm') <= actividad.horaFin);
   }
 
