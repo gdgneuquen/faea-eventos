@@ -12,9 +12,9 @@ export class FirebasedbService {
   ) { }
 
   getEvents(){
-    return this.afdb.list('/actividades').snapshotChanges().map(changes => {
+    return this.afdb.list('/actividades',ref => ref.orderByChild('horaInicio')).snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    });;
+    });
   }
 
 }

@@ -1,10 +1,20 @@
 <div class="container">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="queryString" id="search" placeholder="Buscar ..." [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+  </form>
   <div >
     <mat-card class="card header">
-      <div>Horario</div><div>Actividad</div><div>Tipo</div><div>Profesor</div><div>Aula</div><div>Estado</div>
+      <div>Horario</div>
+      <div>Actividad</div>
+      <!--div>Tipo</div-->
+      <div>Profesor</div>
+      <div>Aula</div>
+      <div>Estado</div>
     </mat-card>
   </div>
-  <div *ngFor="let evento of eventos">
+  <div *ngFor="let evento of eventos | FilterPipe: queryString">
     <mat-card class="card items mat-body-2">
       <div>
         {{evento.horario}}
@@ -12,9 +22,9 @@
       <div>
         {{evento.actividad}}
       </div>
-      <div>
+      <!--div>
         {{evento.tipo}}
-      </div>
+      </div-->
       <div>
         {{evento.profesor}}
       </div>
