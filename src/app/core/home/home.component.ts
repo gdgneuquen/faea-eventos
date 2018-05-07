@@ -37,6 +37,8 @@ export class HomeComponent implements OnInit {
   diezminutos=600000;//en ms
   unminuto=60000;//en ms
 
+  queryString: string;
+
   private subscription : Subscription;
 
   constructor(
