@@ -1,0 +1,35 @@
+{
+    "name": "FAEA - Visor de Clases",
+    "short_name": "Faea",
+    "description": "Visor de Clases de Faea",
+    "start_url": "/?utm_source=homescreen",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "theme_color": "#3f51b5",
+    "icons": [
+        {
+            "src": "/assets/imagenes/faea48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "/assets/imagenes/faea72.png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "/assets/imagenes/faea96.png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "/assets/imagenes/faea144.png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "/assets/imagenes/faea168.png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/imagenes/faea192.png",
+            "sizes": "256x256"
+        }
+    ]
+}
