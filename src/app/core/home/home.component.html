@@ -1,38 +1,67 @@
 <div class="container">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="queryString" id="search" placeholder="Buscar ..." [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="queryString" id="search" placeholder="Buscar ..." [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
   </form>
-  <div >
-    <mat-card class="card header">
-      <div>Horario</div>
-      <div>Actividad</div>
-      <!--div>Tipo</div-->
-      <div>Profesor</div>
-      <div>Aula</div>
-      <div>Estado</div>
-    </mat-card>
-  </div>
+  <mat-card class="cardheader">
+    <div>Horario</div>
+    <div>Actividad</div>
+    <!--div>Tipo</div-->
+    <div>Profesor</div>
+    <div>Aula</div>
+    <div>Estado</div>
+  </mat-card>
   <div *ngFor="let evento of eventos | FilterPipe: queryString">
     <mat-card class="card items mat-body-2">
-      <div>
-        {{evento.horario}}
+      <div class="column1">
+        <div class="row">
+          <div class="tituloMobile">
+            Horario:
+          </div>
+          <div class="valueMobile">
+            {{evento.horario}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="tituloMobile">
+            Actividad:
+          </div>
+          <div class="valueMobile">
+            {{evento.actividad}}
+          </div>
+          <!--div>
+              {{evento.tipo}}
+            </div-->
+        </div>
+        <div class="row">
+          <div class="tituloMobile">
+            Prof.:
+          </div>
+          <div class="valueMobile">
+            {{evento.profesor}}
+          </div>
+        </div>
       </div>
-      <div>
-        {{evento.actividad}}
-      </div>
-      <!--div>
-        {{evento.tipo}}
-      </div-->
-      <div>
-        {{evento.profesor}}
-      </div>
-      <div>
-        {{evento.aula}}
-      </div>
-      <div>
-        {{evento.estado}}
+
+      <div class="column2">
+        <div class="row">
+
+          <div class="tituloMobile">
+            Aula:
+          </div>
+          <div class="valueMobile">
+            {{evento.aula}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="tituloMobile">
+            Estado:
+          </div>
+          <div class="valueMobile" [ngStyle]="setStyle(evento.estado)">
+            {{evento.estado}}
+          </div>
+        </div>
       </div>
     </mat-card>
   </div>
