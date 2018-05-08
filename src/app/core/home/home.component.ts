@@ -95,19 +95,23 @@ export class HomeComponent implements OnInit {
   }
   setStyle(estado) {
     switch (estado) {
-      case "Normal": {
+      case "Demorado": {
         let style = {
-          'color': estado = "Normal" ? 'green' : 'black'
+          'color': estado = "Demorado" ? 'yellow' : 'black'
         }
         return style
-        break;
       }
       case "Cancelado": {
         let style = {
           'color': estado = "Cancelado" ? 'red' : 'black'
         }
         return style
-        break;
+      }
+      default: {
+        let style = {
+          'color': estado = "Normal" ? 'green' : 'black'
+        }
+        return style
       }
     }
   }
