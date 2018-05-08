@@ -8,7 +8,7 @@
     grid-column-gap: 24px;
     justify-items: center;
     color: #9b9b9b;
-    padding: 24px;
+    padding: 16px;
 }
 .example-form{
     width: 100%;
@@ -50,10 +50,10 @@
         display: none;
     }
     .card{
-        padding: 16px;
         display: grid;
         grid-template-columns: 2fr 1fr;
         justify-items: center;
+        padding: 8px;
     }
     .column1{
         justify-self: stretch;
@@ -79,6 +79,7 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         justify-items: center;
+        padding: 8px;
     }
     .column1{
         justify-self: stretch;
@@ -104,6 +105,7 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         justify-items: center;
+        padding: 8px;
     }
     .column1{
         justify-self: stretch;
@@ -117,6 +119,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 12px;
-        justify-items: left;
+        justify-items: center;
     }
 }

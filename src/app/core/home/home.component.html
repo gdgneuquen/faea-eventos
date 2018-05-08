@@ -58,7 +58,7 @@
           <div class="tituloMobile">
             Estado:
           </div>
-          <div class="valueMobile">
+          <div class="valueMobile" [ngStyle]="setStyle(evento.estado)">
             {{evento.estado}}
           </div>
         </div>
