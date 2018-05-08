@@ -1,17 +1,122 @@
 .container{
     margin: 16px;
 }
-.card{
+.cardheader{
+    justify-self: stretch;
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 2fr 1fr 1fr;
-    grid-column-gap: 12px;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-column-gap: 24px;
     justify-items: center;
+    color: #9b9b9b;
+    padding: 24px;
 }
-.header{
-    color: #aaaaaa;
-    padding: 4px;
+.example-form{
+    width: 100%;
+    text-align: right;
 }
-.items{
-    padding: 8px;
-    font-size: 14px;
+
+/* SMALL */
+@media screen and (max-width: 600px) {
+    .cardheader{
+        display: none;
+    }
+    .card{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-column-gap: 16px;
+        padding: 8px;
+        margin: 8px;
+    }
+    .row{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+    }
+    .column1 .column2{
+        display: flex;  
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .tituloMobile{
+        text-align: left;
+    }
+    .valueMobile{
+        text-align: right;
+    }
+}
+/* SMALL TABLET */
+@media screen and (max-width: 800px) and (min-width: 600px)  {
+    .tituloMobile{
+        display: none;
+    }
+    .card{
+        padding: 16px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        justify-items: center;
+    }
+    .column1{
+        justify-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr;
+        grid-column-gap: 12px;
+        justify-items: left;
+    }
+    .column2{
+        justify-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 12px;
+        justify-items: center;
+    }
+}
+/* BIG TABLET */
+@media screen and (min-width: 800px) and (max-width: 1280px) {
+    .tituloMobile{
+        display: none;
+    }
+    .card{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        justify-items: center;
+    }
+    .column1{
+        justify-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr;
+        grid-column-gap: 12px;
+        justify-items: left;
+    }
+    .column2{
+        justify-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 12px;
+        justify-items: center;
+    }
+}
+/* DESKTOP */
+@media screen and (min-width: 1280px){
+    .tituloMobile{
+        display: none;
+    }
+    .card{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        justify-items: center;
+    }
+    .column1{
+        justify-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr;
+        grid-column-gap: 12px;
+        justify-items: left;
+    }
+    .column2{
+        justify-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 12px;
+        justify-items: left;
+    }
 }
