@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => CoreModule,
+    loadChildren: 'app/core/core.module#CoreModule',
   }
 ];
 
