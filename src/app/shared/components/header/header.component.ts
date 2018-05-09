@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
 
     Observable.interval(1000).subscribe(x => {
       var fecha = new Date();
-      this.fechaActual = fecha.toLocaleDateString()
+      this.fechaActual = fecha.toLocaleDateString('es-AR')
       this.horaActual = fecha.toLocaleTimeString('es-AR')
     });
   }
