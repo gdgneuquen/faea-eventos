@@ -3,32 +3,33 @@
     "short_name": "FAEA",
     "description": "Visor de Clases de Faea",
     "start_url": "/?utm_source=homescreen",
-    "background_color": "#ffffff",
+    "background_color": "#893242",
     "display": "standalone",
     "theme_color": "#893242",
+    "orientation": "portrait",
     "icons": [
         {
-            "src": "/assets/imagenes/faea48.png",
+            "src": "/assets/images/faea48.png",
             "sizes": "48x48"
         },
         {
-            "src": "/assets/imagenes/faea72.png",
+            "src": "/assets/images/faea72.png",
             "sizes": "72x72"
         },
         {
-            "src": "/assets/imagenes/faea96.png",
+            "src": "/assets/images/faea96.png",
             "sizes": "96x96"
         },
         {
-            "src": "/assets/imagenes/faea144.png",
+            "src": "/assets/images/faea144.png",
             "sizes": "144x144"
         },
         {
-            "src": "/assets/imagenes/faea168.png",
+            "src": "/assets/images/faea168.png",
             "sizes": "168x168"
         },
         {
-            "src": "/assets/imagenes/faea192.png",
+            "src": "/assets/images/faea192.png",
             "sizes": "192x192"
         }
     ]
