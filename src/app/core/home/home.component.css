@@ -32,7 +32,12 @@
        flex-direction: row;
        justify-content: space-between;
     }
-    .column1 .column2{
+    .column1 {
+        display: flex;  
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .column2 {
         display: flex;  
         flex-direction: column;
         justify-content: space-between;
