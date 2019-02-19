@@ -39,8 +39,6 @@ export class HomeComponent implements OnInit {
 
   queryString: string;
 
-  private subscription: Subscription;
-
   constructor(
     private fbDb: FirebasedbService,
   ) { }
@@ -48,10 +46,11 @@ export class HomeComponent implements OnInit {
   eventos: any = new Array;
 
   ngOnInit() {
-    let timer = TimerObservable.create(this.diezminutos, this.diezminutos);
-    this.subscription = timer.subscribe(t => {
+    TimerObservable
+    .create(this.unminuto, this.unminuto)
+    .subscribe(t => {
       this.getEventos();
-    })
+    });
     this.getEventos();
   }
 
@@ -90,9 +89,9 @@ export class HomeComponent implements OnInit {
   // Controlar el dia seleccionado en array y la hora vencida
   isEventValid(actividad: Evento) {
     return (actividad.dias[moment().locale('es').weekday()]
-      // && moment().locale('es').format('HH:mm') >= actividad.horaInicio);
       && moment().locale('es').format('HH:mm') <= actividad.horaFin);
   }
+  
   setStyle(estado) {
     switch (estado) {
       case "Demorado": {
