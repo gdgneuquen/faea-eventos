@@ -11,6 +11,7 @@ export interface Evento {
   descripcion: string;
   dias: Array<boolean>;
   estadoActividad: string;
+  motivo: string;
   horaInicio: string;
   horaFin: string;
   nombre: string;
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit {
         profesor: evento.nombre,
         aula: evento.zonaAula,
         estado: evento.estadoActividad,
+        motivo:evento.motivo,
       }
       this.eventos.push(evento2);
     }
@@ -94,21 +96,86 @@ export class HomeComponent implements OnInit {
   
   setStyle(estado) {
     switch (estado) {
-      case "Demorado": {
+      case "Cambio": {
         let style = {
-          'color': estado = "Demorado" ? 'yellow' : 'black'
+          'color': estado = "Cambio" ? 'orange' : 'black'
         }
         return style
       }
-      case "Cancelado": {
+      case "Suspendida": {
         let style = {
-          'color': estado = "Cancelado" ? 'red' : 'black'
+          'color': estado = "Suspendida" ? 'red' : 'black'
         }
         return style
       }
       default: {
         let style = {
           'color': estado = "Normal" ? 'green' : 'black'
+        }
+        return style
+      }
+    }
+  }
+
+  setBackColor(estado) {
+    switch (estado) {
+      case "Grado": {
+        let style = {
+          'background': estado = "Grado" ? 'white' : 'black'
+        }
+        return style
+      }
+      case "Posgrado": {
+        let style = {
+          'background': estado = "Posgrado" ? 'bisque' : 'black'
+        }
+        return style
+      }
+      case "Extension": {
+        let style = {
+          'background': estado = "Extension" ? 'turquoise' : 'black'
+        }
+        return style
+      }
+
+      case "Investigación": {
+        let style = {
+          'background': estado = "Investigación" ? 'palevioletred' : 'black'
+        }
+        return style
+      }
+
+      case "CEFEA": {
+        let style = {
+          'background': estado = "CEFEA" ? 'lightskyblue' : 'black'
+        }
+        return style
+      }
+
+      case "Ingreso y Permanencia": {
+        let style = {
+          'background': estado = "Ingreso y Permanencia" ? 'orange' : 'black'
+        }
+        return style
+      }
+
+      case "Otros": {
+        let style = {
+          'background': estado = "Otros" ? 'lightgray' : 'black'
+        }
+        return style
+      }
+
+      case "Bienestar": {
+        let style = {
+          'background': estado = "Bienestar" ? 'darkseagreen' : 'black'
+        }
+        return style
+      }
+      
+      default: {
+        let style = {
+          'background': estado = "Normal" ? 'darkseagreen' : 'black'
         }
         return style
       }

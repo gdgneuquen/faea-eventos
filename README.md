@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Configuracion para instalar Repositorio
 
-`Installar Moments.Js`
+`Instalar Moments.Js`
 
 - npm install --save moment
 

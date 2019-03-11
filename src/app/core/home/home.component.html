@@ -7,13 +7,14 @@
   <mat-card class="cardheader">
     <div>Horario</div>
     <div>Actividad</div>
-    <!--div>Tipo</div-->
+    <div>Tipo</div>
     <div>Profesor</div>
     <div>Aula</div>
     <div>Estado</div>
+     <div>Observ</div>
   </mat-card>
   <div *ngFor="let evento of eventos | FilterPipe: queryString">
-    <mat-card class="card items mat-body-2">
+    <mat-card class="card items mat-body-2" [ngStyle]="setBackColor(evento.tipo)" >
       <div class="column1">
         <div class="row">
           <div class="tituloMobile">
@@ -30,9 +31,14 @@
           <div class="valueMobile">
             {{evento.actividad}}
           </div>
-          <!--div>
-              {{evento.tipo}}
-            </div-->
+        </div>
+        <div class="row">
+          <div class="tituloMobile">
+            Tipo:
+          </div>
+          <div class="valueMobile">
+            {{evento.tipo}}
+          </div>
         </div>
         <div class="row">
           <div class="tituloMobile">
@@ -60,6 +66,14 @@
           </div>
           <div class="valueMobile" [ngStyle]="setStyle(evento.estado)">
             {{evento.estado}}
+          </div>
+        </div>
+        <div  class="row">
+          <div class="tituloMobile">
+            Observ: 
+          </div>
+          <div class="valueMobile">
+            {{evento.motivo}}
           </div>
         </div>
       </div>
