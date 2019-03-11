@@ -152,9 +152,9 @@ export class HomeComponent implements OnInit {
         return style
       }
 
-      case "Ingreso y Permanencia": {
+      case "Ingreso&Permanencia": {
         let style = {
-          'background': estado = "Ingreso y Permanencia" ? 'orange' : 'black'
+          'background': estado = "Ingreso&Permanencia" ? 'cadetblue' : 'black'
         }
         return style
       }
@@ -173,12 +173,6 @@ export class HomeComponent implements OnInit {
         return style
       }
       
-      default: {
-        let style = {
-          'background': estado = "Normal" ? 'darkseagreen' : 'black'
-        }
-        return style
-      }
     }
   }
 }

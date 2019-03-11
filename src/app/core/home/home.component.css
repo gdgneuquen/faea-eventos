@@ -15,6 +15,9 @@
     text-align: right;
 }
 
+img.logo{
+    vertical-align: text-bottom;
+}
 /* SMALL */
 @media screen and (max-width: 600px) {
     .cardheader{
