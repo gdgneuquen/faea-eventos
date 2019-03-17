@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { FilterPipe } from './pipes'
+import { ActivatedRoute} from '@angular/router';
 
 
 export interface Evento {
@@ -37,11 +38,13 @@ export class HomeComponent implements OnInit {
   mediahora = 1800000;//en milisegundos
   diezminutos = 600000;//en ms
   unminuto = 60000;//en ms
+  buscarEnabled:boolean=true;
 
   queryString: string;
 
   constructor(
     private fbDb: FirebasedbService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   eventos: any = new Array;
@@ -53,6 +56,13 @@ export class HomeComponent implements OnInit {
       this.getEventos();
     });
     this.getEventos();
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params); 
+      if (params['view'] == 'pizarra') {
+        this.buscarEnabled=false;
+      }
+
+    });
   }
 
   getEventos() {
@@ -80,7 +90,7 @@ export class HomeComponent implements OnInit {
   }
   //que la fecha de hoy este en el periodo de la Actividad
   belongsToPeriodo(actividad: Evento) {
-    return moment().isBetween(moment(actividad.pickerDesde, moment.ISO_8601), moment(actividad.pickerHasta, moment.ISO_8601));
+    return moment().isBetween(moment(actividad.pickerDesde, moment.ISO_8601), moment(actividad.pickerHasta, moment.ISO_8601).add(1,'day'));
   }
 
   belongsToToday(actividad: Evento) {
@@ -175,4 +185,6 @@ export class HomeComponent implements OnInit {
       
     }
   }
+
+  
 }
