@@ -1,7 +1,7 @@
 {
-    "name": "FAEA - Visor de Clases",
-    "short_name": "FAEA",
-    "description": "Visor de Clases de Faea",
+    "name": "FaEA - Eventos",
+    "short_name": "FaEA",
+    "description": "Visor de Eventos de Fac. Economia UNCo",
     "start_url": "/?utm_source=homescreen",
     "background_color": "#893242",
     "display": "standalone",
