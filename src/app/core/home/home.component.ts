@@ -5,12 +5,14 @@ import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { FilterPipe } from './pipes'
+import { ActivatedRoute} from '@angular/router';
 
 
 export interface Evento {
   descripcion: string;
   dias: Array<boolean>;
   estadoActividad: string;
+  motivo: string;
   horaInicio: string;
   horaFin: string;
   nombre: string;
@@ -36,23 +38,31 @@ export class HomeComponent implements OnInit {
   mediahora = 1800000;//en milisegundos
   diezminutos = 600000;//en ms
   unminuto = 60000;//en ms
+  buscarEnabled:boolean=true;
 
   queryString: string;
 
-  private subscription: Subscription;
-
   constructor(
     private fbDb: FirebasedbService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   eventos: any = new Array;
 
   ngOnInit() {
-    let timer = TimerObservable.create(this.diezminutos, this.diezminutos);
-    this.subscription = timer.subscribe(t => {
+    TimerObservable
+    .create(this.unminuto, this.unminuto)
+    .subscribe(t => {
       this.getEventos();
-    })
+    });
     this.getEventos();
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params); 
+      if (params['view'] == 'pizarra') {
+        this.buscarEnabled=false;
+      }
+
+    });
   }
 
   getEventos() {
@@ -73,13 +83,14 @@ export class HomeComponent implements OnInit {
         profesor: evento.nombre,
         aula: evento.zonaAula,
         estado: evento.estadoActividad,
+        motivo:evento.motivo,
       }
       this.eventos.push(evento2);
     }
   }
   //que la fecha de hoy este en el periodo de la Actividad
   belongsToPeriodo(actividad: Evento) {
-    return moment().isBetween(moment(actividad.pickerDesde, moment.ISO_8601), moment(actividad.pickerHasta, moment.ISO_8601));
+    return moment().isBetween(moment(actividad.pickerDesde, moment.ISO_8601), moment(actividad.pickerHasta, moment.ISO_8601).add(1,'day'));
   }
 
   belongsToToday(actividad: Evento) {
@@ -90,20 +101,20 @@ export class HomeComponent implements OnInit {
   // Controlar el dia seleccionado en array y la hora vencida
   isEventValid(actividad: Evento) {
     return (actividad.dias[moment().locale('es').weekday()]
-      // && moment().locale('es').format('HH:mm') >= actividad.horaInicio);
       && moment().locale('es').format('HH:mm') <= actividad.horaFin);
   }
+  
   setStyle(estado) {
     switch (estado) {
-      case "Demorado": {
+      case "Cambio": {
         let style = {
-          'color': estado = "Demorado" ? 'yellow' : 'black'
+          'color': estado = "Cambio" ? 'orange' : 'black'
         }
         return style
       }
-      case "Cancelado": {
+      case "Suspendida": {
         let style = {
-          'color': estado = "Cancelado" ? 'red' : 'black'
+          'color': estado = "Suspendida" ? 'red' : 'black'
         }
         return style
       }
@@ -115,4 +126,65 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
+  setBackColor(estado) {
+    switch (estado) {
+      case "Grado": {
+        let style = {
+          'background': estado = "Grado" ? 'white' : 'black'
+        }
+        return style
+      }
+      case "Posgrado": {
+        let style = {
+          'background': estado = "Posgrado" ? 'bisque' : 'black'
+        }
+        return style
+      }
+      case "Extension": {
+        let style = {
+          'background': estado = "Extension" ? 'turquoise' : 'black'
+        }
+        return style
+      }
+
+      case "Investigación": {
+        let style = {
+          'background': estado = "Investigación" ? 'palevioletred' : 'black'
+        }
+        return style
+      }
+
+      case "CEFEA": {
+        let style = {
+          'background': estado = "CEFEA" ? 'lightskyblue' : 'black'
+        }
+        return style
+      }
+
+      case "Ingreso&Permanencia": {
+        let style = {
+          'background': estado = "Ingreso&Permanencia" ? 'cadetblue' : 'black'
+        }
+        return style
+      }
+
+      case "Otros": {
+        let style = {
+          'background': estado = "Otros" ? 'lightgray' : 'black'
+        }
+        return style
+      }
+
+      case "Bienestar": {
+        let style = {
+          'background': estado = "Bienestar" ? 'darkseagreen' : 'black'
+        }
+        return style
+      }
+      
+    }
+  }
+
+  
 }

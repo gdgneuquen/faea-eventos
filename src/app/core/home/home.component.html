@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="example-form">
+  <form class="example-form" *ngIf="buscarEnabled">
     <mat-form-field class="example-full-width">
       <input matInput [(ngModel)]="queryString" id="search" placeholder="Buscar ..." [ngModelOptions]="{standalone: true}">
     </mat-form-field>
@@ -7,13 +7,14 @@
   <mat-card class="cardheader">
     <div>Horario</div>
     <div>Actividad</div>
-    <!--div>Tipo</div-->
+    <div>Tipo</div>
     <div>Profesor</div>
     <div>Aula</div>
     <div>Estado</div>
+     <div>Observ</div>
   </mat-card>
   <div *ngFor="let evento of eventos | FilterPipe: queryString">
-    <mat-card class="card items mat-body-2">
+    <mat-card class="card items mat-body-2" [ngStyle]="setBackColor(evento.tipo)" >
       <div class="column1">
         <div class="row">
           <div class="tituloMobile">
@@ -30,9 +31,14 @@
           <div class="valueMobile">
             {{evento.actividad}}
           </div>
-          <!--div>
-              {{evento.tipo}}
-            </div-->
+        </div>
+        <div class="row">
+          <div class="tituloMobile">
+            Tipo:
+          </div>
+          <div class="valueMobile">
+            {{evento.tipo}}
+          </div>
         </div>
         <div class="row">
           <div class="tituloMobile">
@@ -62,7 +68,19 @@
             {{evento.estado}}
           </div>
         </div>
+        <div  class="row">
+          <div class="tituloMobile">
+            Observ: 
+          </div>
+          <div class="valueMobile">
+            {{evento.motivo}}
+          </div>
+        </div>
       </div>
     </mat-card>
   </div>
 </div>
+
+<footer class="py-5 bg-light">
+  <p class="m-0 text-center">Copyright &copy; FaEA 2019 - Desarrollado por  <a href="http://gdgneuquen.org"><img class="logo" src="./assets/images/logogdg.png" width="150"></a></p> 
+</footer>

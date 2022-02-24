@@ -4,7 +4,7 @@
 .cardheader{
     justify-self: stretch;
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 2fr 1fr 1fr 2fr;
     grid-column-gap: 24px;
     justify-items: center;
     color: #9b9b9b;
@@ -15,6 +15,9 @@
     text-align: right;
 }
 
+img.logo{
+    vertical-align: text-bottom;
+}
 /* SMALL */
 @media screen and (max-width: 600px) {
     .cardheader{
@@ -44,6 +47,10 @@
     }
     .tituloMobile{
         text-align: left;
+    }
+
+    .valueMobile2{
+        text-align: none;
     }
     .valueMobile{
         text-align: right;
@@ -89,20 +96,23 @@
     .column1{
         justify-self: stretch;
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr;
+        grid-template-columns: 1fr 2fr 1fr 2fr;
         grid-column-gap: 12px;
         justify-items: left;
     }
     .column2{
         justify-self: stretch;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 2fr;
         grid-column-gap: 12px;
         justify-items: center;
     }
 }
 /* DESKTOP */
 @media screen and (min-width: 1280px){
+    .example-form{
+        display: none;
+    }
     .tituloMobile{
         display: none;
     }
@@ -115,15 +125,15 @@
     .column1{
         justify-self: stretch;
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr;
+        grid-template-columns: 1fr 2fr 1fr 2fr;
         grid-column-gap: 12px;
         justify-items: left;
     }
     .column2{
         justify-self: stretch;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 2fr;
         grid-column-gap: 12px;
-        justify-items: center;
+        justify-items: left;
     }
 }
